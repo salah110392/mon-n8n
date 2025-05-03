@@ -33,7 +33,7 @@ services:
 
       # URL publique et webhooks :
       - key: N8N_HOST
-        value: n8n-service.onrender.com             # ← remplace par le nom de ton service Render
+        value: n8n-service.onrender-1vjn.com             # ← remplace par le nom de ton service Render
       - key: N8N_PROTOCOL
         value: https
       - key: WEBHOOK_URL
