@@ -10,12 +10,16 @@ services:
       # 1) Clé d’encryption (générée automatiquement une fois, ne surtout pas régénérer)
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+        
+      # == Ajoute cette ligne ==
+      - key: N8N_PROXY_HOPS
+        value: "1"
 
       # 2) Connexion à Supabase
       - key: DB_TYPE
         value: postgres
       - key: DB_POSTGRESDB_HOST
-        value: db.ezvozlewtryujnlioyxj.supabase.co   # ← ton Host Supabase
+        value:    # ← ton Host Supabase
       - key: DB_POSTGRESDB_PORT
         value: "5432"                              # ← ton Port Supabase
       - key: DB_POSTGRESDB_DATABASE
