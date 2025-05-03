@@ -27,7 +27,7 @@ services:
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
       - key: N8N_BASIC_AUTH_USER
-        value: ton_user_n8n                          # ← choisis le nom d’utilisateur
+        value: salah110392                         # ← choisis le nom d’utilisateur
       - key: N8N_BASIC_AUTH_PASSWORD
         value: Bulbizarre&110392           # ← choisis un mot de passe robuste
 
