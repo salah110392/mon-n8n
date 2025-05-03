@@ -5,37 +5,48 @@ services:
     runtime: image
     image:
       url: docker.io/n8nio/n8n:latest
+
     envVars:
+      # 1) Clé d’encryption (générée automatiquement une fois, ne surtout pas régénérer)
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
 
-      # Connexion à ta base Supabase :
+      # 2) Connexion à Supabase
       - key: DB_TYPE
         value: postgres
       - key: DB_POSTGRESDB_HOST
-        value: db.ezvozlewtryujnlioyxj.supabase.co   # ← ce que tu as copié
+        value: db.ezvozlewtryujnlioyxj.supabase.co   # ← ton Host Supabase
       - key: DB_POSTGRESDB_PORT
-        value: "5432"                               # ← ce que tu as copié
+        value: "5432"                              # ← ton Port Supabase
       - key: DB_POSTGRESDB_DATABASE
-        value: postgres                             # ← ce que tu as copié
+        value: postgres                             # ← ta DB Supabase
       - key: DB_POSTGRESDB_USER
-        value: postgres                             # ← ce que tu as copié
+        value: postgres                             # ← ton User Supabase
       - key: DB_POSTGRESDB_PASSWORD
-        value: far%8UvTP-Ps$7@          # ← celui que tu as réinitialisé
+        value: far%8UvTP-Ps$7@          # ← ton Password Supabase
 
-      # Basic Auth pour sécuriser l’UI :
+      # 3) Création automatique du compte “owner”
+      - key: N8N_SETUP_OWNER_EMAIL
+        value: salaheddine.benbouazza@gmail.com                    # ← l’email que tu veux pour l’admin
+      - key: N8N_SETUP_OWNER_FIRST_NAME
+        value: Salaheddine                          # ← ton prénom
+      - key: N8N_SETUP_OWNER_LAST_NAME
+        value: Ben Bouazza                              # ← ton nom
+      - key: N8N_SETUP_OWNER_PASSWORD
+        value: Bulbizarre&13002               # ← mot de passe admin, 8+ car., 1Maj, 1 chiffre
+
+      # 4) Protection HTTP Basic Auth (popup navigateur)
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
       - key: N8N_BASIC_AUTH_USER
-        value: salah110392                         # ← choisis le nom d’utilisateur
+        value: salah110392                           # ← identifiant Basic Auth
       - key: N8N_BASIC_AUTH_PASSWORD
-        value: Bulbizarre&110392           # ← choisis un mot de passe robuste
+        value: Bulbizarre&11039213          # ← mot de passe Basic Auth
 
-      # URL publique et webhooks :
+      # 5) URLs publiques & webhooks
       - key: N8N_HOST
-        value: n8n-service.onrender-1vjn.com             # ← remplace par le nom de ton service Render
+        value: n8n-service-1vjn.onrender.com     # ← ton hostname Render
       - key: N8N_PROTOCOL
         value: https
       - key: WEBHOOK_URL
-        value: https://n8n-service.onrender.com/
-
+        value: https://n8n-service-1vjn.onrender.com/
