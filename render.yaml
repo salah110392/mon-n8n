@@ -21,7 +21,7 @@ services:
       - key: DB_POSTGRESDB_HOST
         value: db.ezvozlewtryujnlioyxj.supabase.co  # ← Hôte réel
       - key: DB_POSTGRESDB_PORT
-        value: "6543"  # ← Port du transaction pooler
+        value: 6543  # ← Port du transaction pooler
       - key: DB_POSTGRESDB_DATABASE
         value: postgres
       - key: DB_POSTGRESDB_USER
