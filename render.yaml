@@ -1,6 +1,4 @@
-# Use this Blueprint to deploy n8n on Render as a web
-# service that uses a Postgres database to store
-# workflow data.
+# n8n + Supabase (Transaction Pooler IPv4-compatible)
 
 services:
   - type: web
@@ -13,16 +11,21 @@ services:
     envVars:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"
+
+      # Connexion à Supabase via le pooler (IPv4 compatible)
       - key: DB_TYPE
         value: postgresdb
+      - key: DB_POSTGRESDB_HOST
+        value: postgres.eu-west-1.supabase.com  # Hôte du pooler partagé
+      - key: DB_POSTGRESDB_PORT
+        value: "6543"
       - key: DB_POSTGRESDB_DATABASE
         value: postgres
-      - key: DB_POSTGRESDB_HOST
-        value: db.ezvozlewtryujnlioyxj.supabase.co
-      - key: DB_POSTGRESDB_PASSWORD
-        value: mLL6I35R1Wv8sYjn
       - key: DB_POSTGRESDB_USER
-        value: postgres
-      - key: DB_POSTGRESDB_PORT
-        value: "5432"
+        value: postgres.ezvozlewtryujnlioyxj  # Récupéré de l’URI du pooler
+      - key: DB_POSTGRESDB_PASSWORD
+        value: mLL6I35R1Wv8sYjn  # Ton mot de passe Supabase
+
 
