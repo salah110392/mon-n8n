@@ -1,4 +1,4 @@
-# n8n + Supabase (Transaction Pooler IPv4-compatible)
+# n8n + Supabase (Transaction Pooler, IPv4-compatible)
 
 services:
   - type: web
@@ -11,21 +11,23 @@ services:
     envVars:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "true"
 
-      # Connexion à Supabase via le pooler (IPv4 compatible)
+      # Configuration de la base Supabase via le transaction pooler
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_HOST
-        value: postgres.eu-west-1.supabase.com  # Hôte du pooler partagé
+        value: db.ezvozlewtryujnlioyxj.supabase.co  # ← Hôte réel
       - key: DB_POSTGRESDB_PORT
-        value: "6543"
+        value: "6543"  # ← Port du transaction pooler
       - key: DB_POSTGRESDB_DATABASE
         value: postgres
       - key: DB_POSTGRESDB_USER
-        value: postgres.ezvozlewtryujnlioyxj  # Récupéré de l’URI du pooler
+        value: postgres.ezvozlewtryujnlioyxj  # ← Utilisateur du pooler
       - key: DB_POSTGRESDB_PASSWORD
-        value: mLL6I35R1Wv8sYjn  # Ton mot de passe Supabase
+        value: mLL6I35R1Wv8sYjn  # ← Ton mot de passe Supabase
+
 
 
